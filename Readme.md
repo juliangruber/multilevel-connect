@@ -3,6 +3,8 @@
 
 Connect to multilevel by an address string like `user@host:port`.
 
+[![build status](https://secure.travis-ci.org/juliangruber/multilevel-connect.png)](http://travis-ci.org/juliangruber/multilevel-connect)
+
 ## Example
 
 ```js
