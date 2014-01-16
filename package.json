@@ -13,5 +13,10 @@
   },
   "scripts": {
     "test": "make test"
-  }
+  },
+  "tags": [
+    "level",
+    "levelup",
+    "multilevel"
+  ]
 }
