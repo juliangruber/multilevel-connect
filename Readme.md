@@ -30,7 +30,7 @@ Possible formats for `addr`:
   * host:port
   * user@host:port
 
-`user` is of format `key:value,key:value,...`.
+`user` is a string or of format `key:value,key:value,...`.
 
 Returns a multilevel client.
 

@@ -22,7 +22,7 @@ module.exports = connect;
  *   - host:port
  *   - user@host:port
  *
- * `user` is of format key:value,key:value,...
+ * `user` is a string or of format key:value,key:value,...
  *
  * @param {String} addr
  * @return {Multilevel}
@@ -54,11 +54,14 @@ function connect(str){
 
 function parse(str){
   var match = /^(?:([^@]+)@)?(?:([^:]+):)?(.+)$/.exec(str);
-  var user = match[1] && match[1].split(',').reduce(function(acc, kv){
-    var segs = kv.split(':');
-    acc[segs[0]] = segs[1];
-    return acc;
-  }, {});
+  var user = match[1];
+  if (user && user.indexOf(',') > -1) {
+    user = user.split(',').reduce(function(acc, kv){
+      var segs = kv.split(':');
+      acc[segs[0]] = segs[1];
+      return acc;
+    }, {});
+  }
   return {
     user: user,
     host: match[2],
