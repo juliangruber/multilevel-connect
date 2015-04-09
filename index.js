@@ -36,10 +36,17 @@ function connect(str){
   var port = addr.port;
   var db = multilevel.client();
   
-  reconnect(function(con){
+  var re = reconnect(function(con){
     con.pipe(db.createRpcStream()).pipe(con);
     if (user) db.auth(user);
-  }).connect(port, host);
+  });
+  re.connect(port, host);
+
+  var close = db.close;
+  db.close = function(){
+    re.disconnect();
+    close.apply(db, arguments);
+  };
   
   return db;
 }

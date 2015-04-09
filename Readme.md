@@ -8,7 +8,7 @@ Connect to multilevel by an address string like `user@host:port`.
 ## Example
 
 ```js
-var connect = require('multilevel-connet');
+var connect = require('multilevel-connect');
 
 var db = connect('name:julian,pass:private@ghub.io:3001');
 
